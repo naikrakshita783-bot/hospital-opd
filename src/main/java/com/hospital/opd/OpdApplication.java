@@ -1,3 +1,6 @@
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+
 package com.hospital.opd;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -292,4 +295,23 @@ public class OpdApplication {
             return Map.of("suggestion", geminiService.suggestDoctor(s));
         }
     }
+}
+@Bean
+public CommandLineRunner seedDoctors(DoctorRepo repo) {
+    return args -> {
+        if (repo.count() == 0) {
+            repo.save(newDoctor("Dr. Anil Rao", "Cardiologist", "3"));
+            repo.save(newDoctor("Dr. Meera Shah", "General Physician", "1"));
+            repo.save(newDoctor("Dr. Sunil Nair", "Orthopedic", "5"));
+            repo.save(newDoctor("Dr. Priya Das", "Dermatologist", "2"));
+        }
+    };
+}
+
+private static Doctor newDoctor(String name, String specialization, String roomNo) {
+    Doctor d = new Doctor();
+    d.name = name;
+    d.specialization = specialization;
+    d.roomNo = roomNo;
+    return d;
 }
