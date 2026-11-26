@@ -1,8 +1,6 @@
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-
 package com.hospital.opd;
-
+import org.springframework.context.annotation.Bean;
+import org.springframework.boot.CommandLineRunner;
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,12 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+@EnableJpaRepositories(considerNestedRepositories = true)
 @SpringBootApplication
 public class OpdApplication {
 
@@ -295,7 +293,6 @@ public class OpdApplication {
             return Map.of("suggestion", geminiService.suggestDoctor(s));
         }
     }
-}
 @Bean
 public CommandLineRunner seedDoctors(DoctorRepo repo) {
     return args -> {
@@ -305,8 +302,10 @@ public CommandLineRunner seedDoctors(DoctorRepo repo) {
             repo.save(newDoctor("Dr. Sunil Nair", "Orthopedic", "5"));
             repo.save(newDoctor("Dr. Priya Das", "Dermatologist", "2"));
         }
-    };
+    
+    }; 
 }
+
 
 private static Doctor newDoctor(String name, String specialization, String roomNo) {
     Doctor d = new Doctor();
@@ -315,3 +314,6 @@ private static Doctor newDoctor(String name, String specialization, String roomN
     d.roomNo = roomNo;
     return d;
 }
+}
+
+

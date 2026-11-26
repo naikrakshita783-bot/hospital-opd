@@ -1,0 +1,14 @@
+com/hospital/opd/OpdApplication$DoctorRepo.class
+com/hospital/opd/OpdApplication$PatientRepo.class
+com/hospital/opd/OpdApplication.class
+com/hospital/opd/OpdApplication$ApiController.class
+com/hospital/opd/OpdApplication$TokenStatus.class
+com/hospital/opd/OpdApplication$Token.class
+com/hospital/opd/OpdApplication$RegisterRequest.class
+com/hospital/opd/OpdApplication$DoctorService.class
+com/hospital/opd/OpdApplication$Doctor.class
+com/hospital/opd/OpdApplication$Patient.class
+com/hospital/opd/OpdApplication$TokenService.class
+com/hospital/opd/OpdApplication$TokenDto.class
+com/hospital/opd/OpdApplication$GeminiService.class
+com/hospital/opd/OpdApplication$TokenRepo.class
